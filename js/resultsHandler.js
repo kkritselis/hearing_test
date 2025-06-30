@@ -53,10 +53,10 @@ export class ResultsHandler {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
         const padding = {
-            top: 60,
+            top: 80,
             right: 40,
-            bottom: 80,
-            left: 60
+            bottom: 100,
+            left: 80
         };
         
         const width = this.canvas.width / window.devicePixelRatio - (padding.left + padding.right);
@@ -133,12 +133,14 @@ export class ResultsHandler {
             this.ctx.lineTo(x, height + padding.top + 5);
             this.ctx.stroke();
             
+            // Format frequency label
+            const freqLabel = freq >= 1000 ? `${freq/1000}k` : freq;
+            
             // Draw label
             this.ctx.save();
-            this.ctx.translate(x, height + padding.top + 25);
-            this.ctx.rotate(-Math.PI / 4);
+            this.ctx.translate(x, height + padding.top + 30);
             this.ctx.fillStyle = '#E0E0E0';
-            this.ctx.fillText(freq + ' Hz', 0, 0);
+            this.ctx.fillText(`${freqLabel} Hz`, 0, 0);
             this.ctx.restore();
         });
 
@@ -155,8 +157,21 @@ export class ResultsHandler {
             
             // Draw label
             this.ctx.fillStyle = '#E0E0E0';
-            this.ctx.fillText(dB + ' dB', padding.left - 10, y + 4);
+            this.ctx.fillText(`${dB} dB`, padding.left - 10, y + 4);
         });
+
+        // Add axis titles
+        this.ctx.save();
+        // Y-axis title
+        this.ctx.translate(padding.left - 60, padding.top + height/2);
+        this.ctx.rotate(-Math.PI/2);
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('Hearing Level (dB)', 0, 0);
+        this.ctx.restore();
+        
+        // X-axis title
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('Frequency (Hz)', padding.left + width/2, height + padding.top + 70);
 
         // Restore original styles
         this.ctx.strokeStyle = originalStrokeStyle;
@@ -224,7 +239,7 @@ export class ResultsHandler {
     }
 
     drawLegend(padding) {
-        const legendY = padding.top - 30;
+        const legendY = padding.top - 40;
         
         // Left ear legend
         this.ctx.fillStyle = '#4169E1';
