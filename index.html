@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>earMeNow - Hearing Test</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👂</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <h1>earMeNow</h1>
+            <p>A simple hearing test in your browser</p>
+            <div class="instructions">
+                <h2>Before we begin:</h2>
+                <ul>
+                    <li>Find a quiet environment</li>
+                    <li>Use headphones for best results</li>
+                    <li>Set your device volume to 50%</li>
+                </ul>
+            </div>
+            <button id="start-calibration" class="primary-button">Start Calibration</button>
+        </section>
+
+        <!-- Calibration Screen -->
+        <section id="calibration-screen" class="screen">
+            <h2>Volume Calibration</h2>
+            <p>Let's calibrate your device volume for accurate results.</p>
+            <button id="play-calibration" class="secondary-button">Play Test Tone</button>
+            <div class="volume-controls">
+                <p>Adjust your volume until you can comfortably hear the tone</p>
+                <button id="start-test" class="primary-button">Continue to Test</button>
+            </div>
+        </section>
+
+        <!-- Test Screen -->
+        <section id="test-screen" class="screen">
+            <h2>Hearing Test</h2>
+            <div class="test-interface">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <p id="test-instruction">Click when you hear the tone</p>
+                <button id="heard-tone" class="primary-button">I Hear It</button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="screen">
+            <h2>Your Results</h2>
+            <div class="results-container">
+                <canvas id="audiogram"></canvas>
+            </div>
+            <button id="download-results" class="secondary-button">Download Results</button>
+            <button id="restart-test" class="primary-button">Take Test Again</button>
+        </section>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html> 
