@@ -43,7 +43,7 @@ The purpose of this project is to provide users with a simple, browser-based too
 - [x] Design wireframes for all screens:
   - [x] Welcome/Instruction Screen
   - [x] Hearing Test Interface
-  - [x] Results Page (Audiogram)
+  - [ ] Results Page (Audiogram)
   - [x] Calibration Screen (optional)
 - [x] Ensure mobile responsiveness
 - [x] Choose accessible color scheme and fonts
