@@ -126,10 +126,12 @@ button {
     border-radius: 4px;
     margin: calc(var(--spacing-unit) * 2) 0;
     width: 100%;
-    height: 600px;
+    aspect-ratio: 16/9;
+    max-height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 canvas {
@@ -137,7 +139,7 @@ canvas {
     background-color: var(--color-background);
     width: 100%;
     height: 100%;
-    max-height: 600px;
+    object-fit: contain;
 }
 
 /* Mobile Responsiveness */
@@ -156,5 +158,10 @@ canvas {
 
     .screen {
         padding: var(--spacing-unit);
+    }
+
+    .results-container {
+        aspect-ratio: 4/3;
+        padding: calc(var(--spacing-unit) * 0.5);
     }
 } 
