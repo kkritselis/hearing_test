@@ -59,7 +59,7 @@ The purpose of this project is to provide users with a simple, browser-based too
 
 ### 📊 Data & Reporting
 - [x] Store test results in JavaScript object
-- [x] Display audiogram using Chart.js or Canvas
+- [ ] Display audiogram using Chart.js or Canvas
 - [x] Interpret results with basic categories (Normal, Mild, Moderate, Severe Loss)
 - [x] Add option to download report (PDF or JSON)
 
