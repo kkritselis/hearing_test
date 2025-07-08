@@ -207,6 +207,10 @@ class HearingTest {
         this.resultsHandler = new ResultsHandler('audiogram');
         this.currentDB = this.maxDB;
         
+        // Hide calibration screen elements
+        document.querySelector('.volume-adjustment').classList.add('hidden');
+        document.querySelector('.continue-controls').classList.add('hidden');
+        
         // Show welcome screen
         this.showScreen('welcome-screen');
     }

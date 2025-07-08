@@ -45,7 +45,25 @@ export class AudioHandler {
         // Use 1000 Hz as calibration tone, play in both ears
         this.pannerNode.pan.setValueAtTime(0, this.audioContext.currentTime);
         console.log('Playing calibration tone in both ears');
-        return this.playTone(1000, -20); // -20 dB as a comfortable starting volume
+        
+        // Hide both controls initially (in case of replays)
+        document.querySelector('.volume-adjustment').classList.add('hidden');
+        document.querySelector('.continue-controls').classList.add('hidden');
+        
+        // Play the tone
+        const result = await this.playTone(1000, -20); // -20 dB as a comfortable starting volume
+        
+        if (result) {
+            // Show volume adjustment text immediately
+            document.querySelector('.volume-adjustment').classList.remove('hidden');
+            
+            // Show the continue button after 5 seconds
+            setTimeout(() => {
+                document.querySelector('.continue-controls').classList.remove('hidden');
+            }, 5000);
+        }
+        
+        return result;
     }
 
     setTestEar(ear) {
