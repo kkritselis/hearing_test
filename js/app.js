@@ -29,18 +29,11 @@ class HearingTest {
 
         // Test screen
         document.getElementById('heard-tone').addEventListener('click', () => this.handleHeardResponse());
+        document.getElementById('not-heard-tone').addEventListener('click', () => this.handleNotHeardResponse());
 
         // Results screen
         document.getElementById('download-results').addEventListener('click', () => this.resultsHandler.downloadResults());
         document.getElementById('restart-test').addEventListener('click', () => this.restart());
-
-        // Add no-response timeout
-        document.getElementById('test-screen').addEventListener('click', (e) => {
-            // If they clicked anywhere but the "heard it" button, count as "not heard"
-            if (e.target.id !== 'heard-tone' && this.testInProgress) {
-                this.handleNotHeardResponse();
-            }
-        });
     }
 
     showScreen(screenId) {
@@ -111,16 +104,6 @@ class HearingTest {
         
         // Update instruction for current ear
         this.updateTestInstruction();
-
-        // Set timeout for response
-        setTimeout(() => {
-            if (this.testInProgress && 
-                this.audioHandler.currentFrequency === frequency && 
-                this.audioHandler.currentGain === this.currentDB) {
-                console.log('No response timeout - treating as not heard');
-                this.handleNotHeardResponse();
-            }
-        }, 3000); // 3 seconds to respond
     }
 
     async handleHeardResponse() {
